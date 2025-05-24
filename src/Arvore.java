@@ -1,6 +1,20 @@
 public class Arvore {
 
     private Nozinho no;
-    private Arvore filinholeft;
-    private Arvore filinhoright;
+
+    public Arvore(){
+        this.no = null;
+    }
+
+
+
+    public boolean isEmpty(){
+        return this.no == null;
+    }
+
+    public void preOrdem(){
+        if(isEmpty()){
+
+        }
+    }
 }
