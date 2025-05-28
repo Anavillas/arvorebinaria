@@ -25,6 +25,8 @@ public class Atividade {
         arvore.postOrder();
         System.out.println("\nBusca por nível ");
         arvore.breadthFirst();
+
+        System.out.println("Quantidade de Nós folhas: "+arvore.countLeafs());
     }
 }
 
@@ -76,10 +78,22 @@ class Tree {
     public int countNode() {
         return countNode(raiz);
     }
-
+    public int countLeafs(){
+        return countLeafs(raiz);
+    }
     private int countNode(Node node){
         if(node == null) return 0;
         return 1 + countNode(node.getLeft()) + countNode(node.getRight());
+    }
+
+    private int countLeafs(Node node){
+        if (node == null){
+            return 0;
+        }
+        if(node.getLeft() == null && node.getRight() == null){
+            return 1;
+        }
+        return  countLeafs((node.getLeft())) + countLeafs((node.getRight()));
     }
 
     public void preOrder(){

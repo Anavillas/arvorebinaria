@@ -13,8 +13,7 @@ public class zeroRecursivo {
         tree.raiz.getLeft().setLeft(new Node(4));
         tree.raiz.getLeft().setRight(new Node(5));
 
-        System.out.println(tree.countNode());
-        tree.searchPosOrder(tree.raiz);
+        System.out.println(tree.countLeafs());
     }
 }
 
@@ -88,6 +87,29 @@ class Tree{
         }
         return  count;
     }
+    public int countLeafs(){
+        if(raiz == null) return 0;
+
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(raiz);
+
+        int count = 0;
+
+        while(!queue.isEmpty()){
+            Node temp = queue.poll();
+
+            if(temp.getLeft() == null && temp.getRight() == null){
+                count ++;
+            }
+            if(temp.getLeft() != null){
+                queue.add(temp.getLeft());
+            }
+            if(temp.getRight() != null){
+                queue.add(temp.getRight());
+            }
+        } return count;
+
+    }
 
     public void searchPreOrder(){
         if (raiz == null){
@@ -117,7 +139,7 @@ class Tree{
         var stack = new Stack<Node>();
         Node current = raiz;
         while (current != null || !stack.isEmpty()) {
-            while (current != null) {
+            while (current != null) {//while dentro de while caceta o processador
                 stack.push(current);
                 current = current.getLeft();
             }
