@@ -1,3 +1,5 @@
+package primeiraAtividade;
+
 public class Nozinho<T> {
     private T conteudo;
     private Nozinho<T> left;
